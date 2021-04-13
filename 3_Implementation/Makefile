@@ -1,16 +1,20 @@
 # Name of the project
-PROJECT_NAME = Calculator
+PROJECT_NAME = Quiz_game
 
 # Output directory
 BUILD = build
 
 # All source code files
-SRC = project_main.c\
-src/calculator_operations.c
+SRC = src\reg.c\
+src\login.c\
+src\play_game.c\
+main.c
+
 
 # All test source files
-TEST_SRC = src/calculator_operations.c\
-test/test_calculator_operations.c\
+TEST_SRC = src\reg.c\
+src\login.c\
+test/test_quiz.c\
 unity/unity.c\
 
 TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
