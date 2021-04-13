@@ -31,7 +31,7 @@ What are the benefits to use this game application?
 
 
 ## SWOT ANALYSIS
-![SWOT Analysis](https://github.com/Khushbu-Majithia-261406/LnT_Mini_Project/blob/main/1_Requirements/swot.png)
+![SWOT Analysis](https://github.com/Khushbu-Majithia-261406/quiz_game/blob/master/1_Requirements/SWOT.PNG)
 
 # 4 W'S AND 1 H:-
 
