@@ -1,8 +1,8 @@
 # Architecture
 
-* Add UML Diagrams
-* For information about UML Diagrams refer: [UML Diagrams](https://www.uml-diagrams.org/uml-25-diagrams.html)
-## Tools 
-* [Draw.io](https://app.diagrams.net/)
+Added architectural diagrams
+
+## Tools used
+* [Visual paradigm](https://online.visual-paradigm.com/diagrams/features/aws-architecture-diagram-tool/)
 * [Creately](https://app.creately.com/diagram/create)
-* or any other free tools
+
