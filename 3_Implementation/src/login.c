@@ -1,4 +1,7 @@
+#include"quiz_header.h"
 #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
 struct web
 {
@@ -9,38 +12,41 @@ struct web
 int login(char name[30], char pass[30])
 {
 
-int loginflag=0;
-int finalflag;
 
-//char name[30],pass[30];
-FILE *fp;
-fp=fopen("users.txt","r");
-//int checku,checkp;
-int flag=0;
-  char line[100];
-  //const char* val1;
-  //const char*val2;
-  char *pch;
-  
+  int finalflag;
+
+  FILE *fp;
+  fp=fopen("users.txt","r");
+
+  int flag=0;
+    char line[100];
+    char *pch;
+    
 
 
 
-        int f=0;
-   int nameflag=1;
-   int passflag=1;
-  
+    int f=0;
+    int nameflag=1;
+    int passflag=1;
+    int l;
 
 
 
-//to check username
-while ( fgets (line , 100 , fp) != NULL ) {
-  
-  nameflag=1;
-       pch = strtok (line,",");
-       
-       
-       int l=strlen(pch);   
+  //to check username
+  while ( fgets (line , 100 , fp) != NULL ) {
+    
+        nameflag=1;
+          pch = strtok (line,",");
+          
+          int l1=strlen(name);
+          int l2=strlen(pch);   
          
+        if(l1>l2)
+         l=l1;
+
+         else
+         l=l2;
+
         for(int i=0;i<l;i++)
          {
              if(name[i]==pch[i])
@@ -55,6 +61,7 @@ while ( fgets (line , 100 , fp) != NULL ) {
              break;
          }
          }
+
        if(nameflag==0)
        break;
  
@@ -68,49 +75,54 @@ rewind(fp);
          {
              int i=1;
              
- while ( fgets (line , 100 , fp) != NULL ) {
-       
-passflag=1;
-       pch = strtok (line,",");
-       
+    while ( fgets (line , 100 , fp) != NULL ) 
+    {      
+        passflag=1;
+        pch = strtok (line,",");  //retrieving username
+        
            
            
-           i++;
+        i++;
 
-         pch = strtok (NULL, ",");
+        pch = strtok (NULL, ",");   //retrieving password
          
-         if(i%2==0)
-           {
+        if(i%2==0)  //only check the password column
+        {
               
-  
-         int l2=strlen(pch);
-         
+            int l1=strlen(pass);
+            int l2=strlen(pch);
+                  
+            if(l1>l2)
+            l=l1;
 
-        for(int k=0;k<l2-1;k++)
-        { 
-    
-         if(pch[k]==pass[k])
-         {
-             passflag=0;
+            else
+            l=l2;
+
+            for(int k=0;k<l-1;k++)
+            { 
+        
+            if(pch[k]==pass[k])
+            {
+                passflag=0;
+                
+            }
             
-         }
-         
-         
-         else
-         {
-             passflag=1;
             
-             break;
-         }
+            else
+            {
+                passflag=1;
+                
+                break;
+            }
        }
 
 
                
 
        i++;
-           }
+     }
            
-           if(passflag==0)
+       if(passflag==0)
        break;
        
  }
@@ -120,20 +132,24 @@ passflag=1;
        //both username and password matched
         if(nameflag==0 && passflag==0)
         {
+          printf("\n\n\t\t\t\t***************************");
           printf("\n\n\t\t\t\t  YOU ARE SUCCESSFULLY LOGIN");
+          
           finalflag=1; 
         }
 
 
         else
         {
+          printf("\n\n\t\t\t\t***************************");
           printf("\n\n\t\t\t\t  INVALID USERNAME OR PASSWORD");
+         
           finalflag=0;
     }
 
 
     if(finalflag==1)
-    return 0;
+    return 1;
 
     else
     return 0;

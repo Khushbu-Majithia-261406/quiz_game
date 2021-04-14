@@ -19,8 +19,10 @@
  */
 
 typedef enum error_t {
-    FAILURE=0,
-    SUCCESS = 0             /**< Compute operation is successful */
+    REGISTERSUCCESS=1, /**< Division by 0 error */
+    REGISTERFAILURE=0,
+    LOGINSUCCESS=1,    /**< Null pointer dereferncing error */
+    LOGINFAILURE=0             /**< Compute operation is successful */
 }error_t;
 
 

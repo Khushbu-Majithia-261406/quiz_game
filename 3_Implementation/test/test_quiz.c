@@ -1,13 +1,11 @@
 #include "quiz_header.h"
 #include "unity.h"
 
-
-
-
-
 /* Required by the unity test framework */
 void setUp()
-{
+{                                                                                                                      
+
+    
 }
 /* Required by the unity test framework */
 void tearDown()
@@ -18,14 +16,15 @@ void tearDown()
 void creg(void)
 
 {
-   
-    
-    //available username
-    TEST_ASSERT_EQUAL(SUCCESS, reg("samara","samara123"));
-   
+   //available username
+
+    //[NOTE:- this testcase will apply true only once because after that this username will be inserted into the system]
+
+    TEST_ASSERT_EQUAL(REGISTERSUCCESS,reg("HFEUKFHW1233445","newpassword"));
+
 
     //unavailable username
-    TEST_ASSERT_EQUAL(FAILURE, reg("khushbu12","khushbu123"));
+   TEST_ASSERT_EQUAL(REGISTERFAILURE, reg("khushbu12","khushbu123"));
 }
 
 
@@ -35,16 +34,21 @@ void clogin(void)
 {
     
     //invalid username, valid password
-    TEST_ASSERT_EQUAL(FAILURE, login("Khushbu","Khushbu123"));
-    
+
+    TEST_ASSERT_EQUAL(LOGINFAILURE, login("khushbu","khushbu123"));
+   
+
     //valid username, invalid password
-    TEST_ASSERT_EQUAL(FAILURE, login("Khushbu12","Khushbu"));
+    TEST_ASSERT_EQUAL(LOGINFAILURE, login("khushbu12","khushbu"));
+
 
     //invalid username, valid password
-    TEST_ASSERT_EQUAL(FAILURE, login("Khush","Khush123"));
+    TEST_ASSERT_EQUAL(LOGINFAILURE, login("khush","khush123"));
+
+
 
     //valid username, valid password
-    TEST_ASSERT_EQUAL(SUCCESS, login("Khushbu12","Khushbu123"));
+    TEST_ASSERT_EQUAL(LOGINSUCCESS, login("khushbu12","khushbu123"));
 
 }
 
