@@ -23,6 +23,6 @@
 |  L_09       | User enters option in quiz gaming other than available option | User enters answer other than options A,B,C,D| Printing the message as, "CHOOSE FROM GIVEN 4 OPTIONS" |----------------| Boundary based    |
 |  L_10       | User enters correct answer to a question| User enters correct answer from available options| "CORRECT" message will be displayed|----------------| Scenario based    |
 |  L_11       | User enters incorrect answer to a question | User enters incorrect answer from available options| "SORRY ACTUAL ANSWER IS A(correct answer)" message will be displayed|----------------| Scenario based    |
-|  L_12       | User successfully answers all questions | User answers all questions based on his knowledge | Score will be displayed and user will be navigated to homescreen of quiz gaming zone----------------|Requirement based    |
+|  L_12       | User successfully answers all questions | User answers all questions based on his knowledge | Score will be displayed and user will be navigated to homescreen of quiz gaming zone|  ----------------|Requirement based    | 
 |  L_13       |Exit Functionality  | User clicks on Exit Button| "HOPE YOU ENJOYED!!!BYE" message will be displayed |----------------| Requirement based    |
 
