@@ -19,16 +19,16 @@ int login(char name[30], char pass[30])
   fp=fopen("users.txt","r");
 
   int flag=0;
-    char line[100];
-    char *pch;
+  char line[100];  //to retrieve data from file
+  char *pch;
     
 
 
 
-    int f=0;
-    int nameflag=1;
-    int passflag=1;
-    int l;
+  int f=0;
+  int nameflag=1;
+  int passflag=1;
+  int l;  //to loop till this length
 
 
 
@@ -58,85 +58,85 @@ int login(char name[30], char pass[30])
          else
          {
              nameflag=1;
-             break;
+             break;           //character at the index not matching, not comparing the username any further
          }
          }
 
        if(nameflag==0)
        break;
  
-}
+    }
 
 //to set file pointer at beginning of file
 rewind(fp);
 
 //check password only if username available
-         if(nameflag==0)
+    if(nameflag==0)
          {
              int i=1;
              
-    while ( fgets (line , 100 , fp) != NULL ) 
-    {      
-        passflag=1;
-        pch = strtok (line,",");  //retrieving username
-        
-           
-           
-        i++;
-
-        pch = strtok (NULL, ",");   //retrieving password
-         
-        if(i%2==0)  //only check the password column
-        {
+        while ( fgets (line , 100 , fp) != NULL ) 
+        {      
+            passflag=1;
+            pch = strtok (line,",");  //retrieving username
+            
               
-            int l1=strlen(pass);
-            int l2=strlen(pch);
+              
+            i++;
+
+            pch = strtok (NULL, ",");   //retrieving password
+            
+            if(i%2==0)  //only check the password column
+            {
                   
-            if(l1>l2)
-            l=l1;
+                int l1=strlen(pass);
+                int l2=strlen(pch);
+                      
+                if(l1>l2)
+                l=l1;
 
-            else
-            l=l2;
+                else
+                l=l2;
 
-            for(int k=0;k<l-1;k++)
-            { 
-        
-            if(pch[k]==pass[k])
-            {
-                passflag=0;
-                
-            }
+                for(int k=0;k<l-1;k++)
+                { 
             
-            
-            else
-            {
-                passflag=1;
+                if(pch[k]==pass[k])
+                {
+                    passflag=0;
+                    
+                }
                 
-                break;
-            }
-       }
+                
+                else
+                {
+                    passflag=1;
+                    
+                    break;      
+                }
+          }
 
 
-               
+                  
 
-       i++;
-     }
-           
-       if(passflag==0)
-       break;
-       
- }
-         }
- 
-       
-       //both username and password matched
-        if(nameflag==0 && passflag==0)
-        {
-          printf("\n\n\t\t\t\t***************************");
-          printf("\n\n\t\t\t\t  YOU ARE SUCCESSFULLY LOGIN");
-          
-          finalflag=1; 
+          i++;
         }
+              
+          if(passflag==0)
+          break;
+          
+      }
+    }
+    
+          
+          //both username and password matched
+            if(nameflag==0 && passflag==0)
+            {
+              printf("\n\n\t\t\t\t***************************");
+              printf("\n\n\t\t\t\t  YOU ARE SUCCESSFULLY LOGIN");
+              
+              finalflag=1; 
+            }
 
 
         else
@@ -149,7 +149,7 @@ rewind(fp);
 
 
     if(finalflag==1)
-    return 1;
+    return 1;           //returning final status
 
     else
     return 0;

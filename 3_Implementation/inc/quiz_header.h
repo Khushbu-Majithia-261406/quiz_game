@@ -1,7 +1,7 @@
 /**
  * @file quiz_header.h
  * @author Khushbu Majithia (261406)
- * @brief Functions to register, login, play_game, view instructions of quiz, attempt)quiz and logout
+ * @brief Functions to register, login, play_game, view instructions of quiz, attempt quiz and logout
  * @version 0.1
  * @date 2021-04-13
  * 
@@ -19,10 +19,10 @@
  */
 
 typedef enum error_t {
-    REGISTERSUCCESS=1, /**< Division by 0 error */
-    REGISTERFAILURE=0,
-    LOGINSUCCESS=1,    /**< Null pointer dereferncing error */
-    LOGINFAILURE=0             /**< Compute operation is successful */
+    REGISTERSUCCESS=1, /**< Successful registration */
+    REGISTERFAILURE=0, /**< UnSuccessful registration */
+    LOGINSUCCESS=1,    /**< Successful login */
+    LOGINFAILURE=0     /**< UnSuccessful login */
 }error_t;
 
 

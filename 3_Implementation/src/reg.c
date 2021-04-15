@@ -1,7 +1,8 @@
+#include"quiz_header.h"
 #include<stdio.h>
 #include<string.h>
-#include"quiz_header.h"
 #include<stdlib.h>
+
 struct web
 {
     char name[30];
@@ -13,8 +14,8 @@ int reg(char name[], char pass[])
 
   {
     
-     int flag=0;
-     int finalflag=0;
+    int flag=0;
+    int finalflag=0;
 
 
 
@@ -22,7 +23,7 @@ int reg(char name[], char pass[])
     
     int n;
     int l;
-    char line[255];
+    char line[255];     //to retrieve data from file
     char* pch;
     
     int nameflag=1;
@@ -32,7 +33,7 @@ int reg(char name[], char pass[])
 
       
   //to check username availability
-  while ( fgets (line , 100 , fp) != NULL ) {
+    while ( fgets (line , 100 , fp) != NULL ) {
     
     nameflag=1;
         pch = strtok (line,",");
@@ -45,7 +46,7 @@ int reg(char name[], char pass[])
 
           else
           l=l2;
-          //printf("\n %s", pch);
+         
           for(int i=0;i<l;i++)
           {
               if(name[i]==pch[i])
@@ -60,6 +61,7 @@ int reg(char name[], char pass[])
               break;
           }
           }
+
         if(nameflag==0)
         break;
   
@@ -85,16 +87,16 @@ int reg(char name[], char pass[])
    }
 
 
-else
-{
-  printf("\n\n\t\t\t\t***************************");
-  printf("\n\n\t\t\t\t  USERNAME NOT AVAILABLE ");
-  printf("\n\t\t\t\t  CHOOSE OTHER USERNAME ");
-  finalflag=0;
-}
+  else
+  {
+    printf("\n\n\t\t\t\t***************************");
+    printf("\n\n\t\t\t\t  USERNAME NOT AVAILABLE ");
+    printf("\n\t\t\t\t  CHOOSE OTHER USERNAME ");
+    finalflag=0;
+  }
 
           
+  return finalflag;       //returning final status
 
-  return finalflag;
   }
   

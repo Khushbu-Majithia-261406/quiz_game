@@ -1,14 +1,10 @@
 #include<string.h>
-#include<conio.h>
 #include<stdlib.h>
 #include<stdio.h>
-
 #include "quiz_header.h"
 #include "test_quiz.h"
 
 int f=0;
-
-int regflag=0;
 
 int main()
 {
@@ -52,8 +48,10 @@ int main()
         scanf("%s",pass);
 
 
+       
         //registering user to the system
-        int flag1=reg(name,pass);
+        int (*fp1)(char[], char[])=&reg;
+        int flag1=(*fp1)(name,pass);
 
         //username not avaialable
         if(flag1==0)
@@ -82,7 +80,8 @@ else if(choice=='2')
     scanf("%s",pass);
 
     //validate user login credentials
-    int flag2=login(name,pass);
+    int (*fp2)(char[], char[])=&login;
+    int flag2=(*fp2)(name,pass);
 
 
     //invalid credentials
@@ -96,8 +95,9 @@ else if(choice=='2')
     //valid credentials
     else
     {
-    play_game();
-    //    play_game();
+        void (*fp3)()=&play_game;
+        (*fp3)(name,pass);
+    
     }
 
 }

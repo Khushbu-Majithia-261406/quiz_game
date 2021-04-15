@@ -1,35 +1,58 @@
-SRC = unity/unity.c\
-src/reg.c\
+PROJ_NAME = quiz_project
+
+BUILD_DIR = Build
+
+SRC = src/reg.c\
 src/login.c\
 src/play_game.c\
 test/test_quiz.c\
-main.c
+unity/unity.c
 
-INC = -Iunity\
--Iinc\
--Itest
 
-PROJECT_NAME = quiz_project.exe
 
-all: $(SRC)
-	gcc $(SRC) $(INC) -o $(PROJECT_NAME)
+INC = -Iinc\
+-Iunity\
+-Itest\
 
-run:$(PROJECT_NAME)
-	./${PROJECT_NAME}
+INCT= -Itest\test_quiz.h
 
-try: $(SRC)
-	gcc unity.c reg.c login.c play_game.c test_quiz.c unity_internals.h unity.h quiz_header.h test_quiz.h -o pro.exe
-doc:
-	make -C documentation
+#To check if the OS is Windows or Linux and set the executable file extension and delete command accordingly
+ifdef OS
+   RM = del /q
+   FixPath = $(subst /,\,$1)
+   EXEC = exe
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -rf
+      FixPath = $1
+	  EXEC = out
+   endif
+endif
 
-clean:
-	rm -rf $(PROJECT_NAME) documentation/html
+# Makefile will not run target command if the name with file already exists. To override, use .PHONY
+.PHONY : all test coverage run clean doc
+
+all:$(BUILD_DIR)
+	gcc main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+
+run: all
+	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+
+test: $(SRC) $(INCT) $(TEST_SRC)
+	gcc $^ $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
 
 coverage:${PROJECT_NAME}
-	gcc -fprofile-arcs -ftest-coverage $(SRC) $(INC) -o $(PROJECT_NAME)
-	./${PROJECT_NAME}
-	gcov -a src/reg.c src/login.c src/play_game.c main.c
+	gcc -fprofile-arcs -ftest-coverage $(SRC) $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	gcov -a $(SRC)
 
+doc:
+	make -C doc
+$(BUILD_DIR):
+	mkdir $(BUILD_DIR)
 
-
-
+clean:
+	$(RM) $(call FixPath,$(BUILD_DIR)/*)
+	make clean -C doc
+	rmdir $(BUILD_DIR) doc/html
