@@ -1,6 +1,6 @@
 ## Here is the suummary of the attached output of the test cases
 
-1. UNITY TEST RESULTS:- [SNAPSHOT-01](https://github.com/Khushbu-Majithia-261406/quiz_game/blob/master/6_ImagesAndVideos/snapshots/SNAPSHOT-01.PNG)
+1. UNITY TEST RESULTS:- [SNAPSHOT-1](https://github.com/Khushbu-Majithia-261406/quiz_game/blob/master/6_ImagesAndVideos/snapshots/SNAPSHOT-01.PNG)
 
 2. MAIN-PAGE (CHOICE GIVEN OTHER THAN PROVIDED):- [SNAPSHOT-2](https://github.com/Khushbu-Majithia-261406/quiz_game/blob/master/6_ImagesAndVideos/snapshots/SNAPSHOT-02.PNG)
 
